@@ -4,15 +4,17 @@
 #include <Ps3Controller.h>
  
 // Define motor driver pins
-#define PWMA_PIN 22
-#define AIN1_PIN 18
-#define AIN2_PIN 5
-#define PWMB_PIN 23
-#define BIN1_PIN 19
-#define BIN2_PIN 21
+#define PWMA_PIN 16
+#define AIN1_PIN 14
+#define AIN2_PIN 12
+#define PWMB_PIN 27
+#define BIN1_PIN 17
+#define BIN2_PIN 13
+#define ENA_PIN  2
+#define ENB_PIN  4
  
 // Define PWM Parameters
-const int motorFreq = 1000;
+const int motorFreq = 15000;
 const int motorResolution = 8;
  
 // Define channels for each motor
@@ -134,7 +136,12 @@ void setup() {
   pinMode(AIN2_PIN, OUTPUT);
   pinMode(BIN1_PIN, OUTPUT);
   pinMode(BIN2_PIN, OUTPUT);
+  pinMode(ENA_PIN, OUTPUT);
+  pinMode(ENB_PIN, OUTPUT);
  
+  digitalWrite(ENA_PIN, HIGH);
+  digitalWrite(ENB_PIN, HIGH);
+
   // Set channel Parameters for each motor
   ledcSetup(motorAChannel, motorFreq, motorResolution);
   ledcSetup(motorBChannel, motorFreq, motorResolution);
